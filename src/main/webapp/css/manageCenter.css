@@ -1,0 +1,430 @@
+.table_hr_margin {
+    width: 100%;
+    height: 1px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    *height: 1px;
+    color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.table_hr_nomargin {
+    width: 100%;
+    height: 1px;
+    *height: 1px;
+    color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mainCenter {
+    /* 禁止选中*/
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    margin: 10% auto auto auto; /*上左下右*/
+    /*padding: 0 1% 1% 1%;!*上右下左*!*/
+    text-align: center;
+    width: 80%;
+    min-width: 1340px;
+    height: 60%;
+    min-height: 550px;
+    /*background-color: #006a85;*/
+}
+
+/*默认链接颜色*/
+.mainCenter a:link {
+    color: #23769d /*颜色自定义*/;
+    text-decoration: none;
+    outline: none; /*去掉firefox浏览器焦点虚线框*/
+}
+
+/* 已经访问的链接 */
+.mainCenter a:visited {
+    color: #009120 /*颜色自定义*/
+}
+
+/* 鼠标经过链接 */
+.mainCenter a:hover {
+    color: #0f304c /*颜色自定义*/
+}
+
+/* 鼠标按下的颜色 */
+.mainCenter a:active {
+    color: #6c918b /*颜色自定义*/
+}
+
+/* 点击激活链接 */
+
+.mainCenter .mainCenter_topLeft {
+    margin-top: 1%;
+    margin-left: 2.5%;
+    float: left;
+    /*background: #edfffa;*/
+    width: 20%;
+    height: 50%;
+    /*背景斜纹*/
+    background: #edfffa repeating-linear-gradient(30deg,
+        /*两个颜色结合*/ hsla(0, 0%, 0%, 0.05),
+    hsla(0, 0%, 50%, 0.1) 1px,
+    hsla(0, 0%, 50%, 0.05),
+    transparent 0, transparent 10px);
+}
+
+.mainCenter .mainCenter_topLeft .login_HeaderImage {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 18%;
+    text-align: center;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    border: solid #0fbacb 1px;
+}
+
+.mainCenter .mainCenter_topCenter {
+    margin-top: 1%;
+    margin-left: 3px;
+    float: left;
+    background: white;
+    width: 30%;
+    height: 50%;
+}
+
+.mainCenter .mainCenter_topCenter .loginInfo {
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /*background: #00ffdf;*/
+    /*自动换行*/
+    word-wrap: break-word;
+    /* 超出显示省略号*/
+    text-overflow: ellipsis;
+}
+
+.mainCenter .mainCenter_topCenter .loginInfo span {
+    margin-bottom: 2%;
+    text-align: left;
+    float: left;
+    width: 100%;
+    /* 内容超出隐藏*/
+    overflow: hidden;
+    font-size: small;
+}
+
+.mainCenter .mainCenter_topCenter .loginInfo .loginInfo_note {
+    color: black;
+    margin-bottom: 2%;
+    text-align: left;
+    margin-left: 5%;
+    float: left;
+    width: 100%;
+    height: 40%;
+    /* 内容超出显示滚动，并且隐藏滚动条*/
+    overflow-x: hidden;
+    /* 内容超出显示滚动，并且显示滚动条*/
+    overflow-y: scroll;
+    font-size: smaller;
+    word-wrap:break-word;
+}
+
+.mainCenter .mainCenter_topRight {
+    margin-top: 1%;
+    margin-left: 3px;
+    float: left;
+    background: white;
+    width: 45%;
+    height: 50%;
+}
+
+.mainCenter .mainCenter_topRight .allTeacherNumber {
+
+    margin-top: 8%;
+    margin-left: 10%;
+    text-align: left;
+    font-size: 100px;
+    float: left;
+    width: 35%;
+    height: auto;
+    opacity: 0.5;
+    /*background: #006a85;*/
+}
+
+.mainCenter .mainCenter_topRight .allTeacherNumber:hover {
+    opacity: 1;
+
+    /*两者配合实现流畅动画;淡入淡出*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_topRight .teacherNum {
+    margin-top: 8%;
+    margin-left: 10%;
+    float: left;
+    width: 40%;
+    height: auto;
+    /*background: #6c918b;*/
+}
+
+.mainCenter .mainCenter_topRight .teacherNum ul li {
+    /*竖线*/
+    border-left: #81c0dc solid 5px;
+    padding-left: 5%;
+    font-size: medium;
+    list-style-type: none;
+    text-align: left;
+    margin-bottom: 5%;
+    opacity: 0.6;
+    /*background: #00ffdf;*/
+}
+
+.mainCenter .mainCenter_topRight .teacherNum ul li:hover {
+    opacity: 1;
+
+    /*两者配合实现流畅动画;淡入淡出*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+
+    /*渐变*/
+    background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0), rgb(234, 248, 255));
+    background: -o-linear-gradient(right, rgba(35, 118, 157, 0), rgb(234, 248, 255));
+    background: -moz-linear-gradient(right, rgba(255, 0, 0, 0), rgb(234, 248, 255));
+    background: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(234, 248, 255));
+}
+
+/*-----------------------------------------------------------*/
+.mainCenter .mainCenter_downLeft {
+    margin-top: 3px;
+    margin-left: 2.5%;
+    float: left;
+    width: 40%;
+    height: 45%;
+    background: white;
+}
+
+.mainCenter .mainCenter_downLeft .allCurriculumNumber {
+
+    margin-top: 8%;
+    margin-right: 10%;
+    text-align: right;
+    font-size: 100px;
+    float: left;
+    width: 40%;
+    height: auto;
+    opacity: 0.5;
+    /*background: #006a85;*/
+}
+
+.mainCenter .mainCenter_downLeft .allCurriculumNumber:hover {
+    opacity: 1;
+    /*两者配合实现流畅动画;淡入淡出*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_downLeft .gradeCurriculumNum {
+    margin-top: 8%;
+    margin-left: 10%;
+    float: left;
+    width: 35%;
+    height: auto;
+    /*background: #6c918b;*/
+}
+
+.mainCenter .mainCenter_downLeft .gradeCurriculumNum ul li {
+    /*竖线*/
+    border-left: solid 1px;
+    padding-left: 5%;
+    font-size: medium;
+    list-style-type: none;
+    text-align: left;
+    margin-bottom: 5%;
+    opacity: 0.6;
+    /*background: #00ffdf;*/
+}
+
+.mainCenter .mainCenter_downLeft .gradeCurriculumNum ul li:hover {
+    opacity: 1;
+    /*两者配合实现流畅动画;淡入淡出*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+
+    /*渐变*/
+    background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0), rgb(234, 248, 255));
+    background: -o-linear-gradient(right, rgba(35, 118, 157, 0), rgb(234, 248, 255));
+    background: -moz-linear-gradient(right, rgba(255, 0, 0, 0), rgb(234, 248, 255));
+    background: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(234, 248, 255));
+}
+
+.mainCenter .mainCenter_downCenter {
+    margin-top: 3px;
+    margin-left: 3px;
+    float: left;
+    background: white;
+    width: 35%;
+    height: 45%;
+
+}
+
+.mainCenter .mainCenter_downRight {
+    margin-top: 3px;
+    margin-left: 3px;
+    float: left;
+    background: white;
+    width: 20%;
+    height: 45%;
+}
+.mainCenter .mainCenter_downRight img{
+    padding-top: 20%;
+    width: 50%;
+    height: 50%;
+    opacity: 0.2;
+}
+.mainCenter .mainCenter_downRight img:hover{
+    padding-top: 20%;
+    width: 50%;
+    height: 50%;
+    opacity: 0.5;
+
+    /*两者配合实现流畅动画;淡入淡出*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_topLeft:hover {
+    /*以下为阴影代码*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*background:url(a.jpg) no-repeat;*/
+
+    /*以下代码控制DIV缩放：匹配不同浏览器*/
+    -moz-transform: scale(1, 1); /*1为零界点，大于1为扩，小于1，为缩，参数为：横缩放，纵缩放*/
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+    /*两者配合实现流畅动画;控制底部扩大*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_topCenter:hover {
+    /*以下为阴影代码*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*background:url(a.jpg) no-repeat;*/
+
+    /*以下代码控制DIV缩放：匹配不同浏览器*/
+    -moz-transform: scale(1, 1); /*1为零界点，大于1为扩，小于1，为缩，参数为：横缩放，纵缩放*/
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+    /*两者配合实现流畅动画;控制底部扩大*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_topRight:hover {
+    /*以下为阴影代码*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*background:url(a.jpg) no-repeat;*/
+
+    /*以下代码控制DIV缩放：匹配不同浏览器*/
+    -moz-transform: scale(1, 1); /*1为零界点，大于1为扩，小于1，为缩，参数为：横缩放，纵缩放*/
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+    /*两者配合实现流畅动画;控制底部扩大*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_downLeft:hover {
+    /*以下为阴影代码*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*background:url(a.jpg) no-repeat;*/
+
+    /*以下代码控制DIV缩放：匹配不同浏览器*/
+    -moz-transform: scale(1, 1); /*1为零界点，大于1为扩，小于1，为缩，参数为：横缩放，纵缩放*/
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+    /*两者配合实现流畅动画;控制底部扩大*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_downCenter:hover {
+    /*以下为阴影代码*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*background:url(a.jpg) no-repeat;*/
+
+    /*以下代码控制DIV缩放：匹配不同浏览器*/
+    -moz-transform: scale(1, 1); /*1为零界点，大于1为扩，小于1，为缩，参数为：横缩放，纵缩放*/
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+    /*两者配合实现流畅动画;控制底部扩大*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}
+
+.mainCenter .mainCenter_downRight:hover {
+    /*以下为阴影代码*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: inset 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 10px 50px -20px rgba(0, 0, 0, 0.5);
+    /*background:url(a.jpg) no-repeat;*/
+
+    /*以下代码控制DIV缩放：匹配不同浏览器*/
+    -moz-transform: scale(1, 1); /*1为零界点，大于1为扩，小于1，为缩，参数为：横缩放，纵缩放*/
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+    /*两者配合实现流畅动画;控制底部扩大*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+}

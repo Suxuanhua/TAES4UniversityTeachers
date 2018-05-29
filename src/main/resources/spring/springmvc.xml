@@ -1,0 +1,144 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+
+    <!--系统配置-->
+    <!--引入配置系统统一配置文件-->
+    <context:property-placeholder location="classpath:TAES4UniversityTeachers-Configuration.properties"/>
+    <!-- 系统配置类-->
+    <bean id="systemConfig" class="org.suxuanhua.ssm.po.initconfig.Config">
+        <property name="TAES4UT_IMG_PATH" value="${TAES4UT_IMG_PATH}"/>
+        <property name="TAES4UT_POST_PATH" value="${TAES4UT_POST_PATH}"/>
+        <property name="TAES4UT_XML_POSTLIST_PATH" value="${TAES4UT_XML_POSTLIST_PATH}"/>
+        <property name="TAES4UT_IMG_VIRTUAL_PATH" value="${TAES4UT_IMG_VIRTUAL_PATH}"/>
+    </bean>
+
+    <!--Controller 工具类-->
+    <bean id="utilsController" class="org.suxuanhua.ssm.controller.UtilsController"/>
+
+    <!--Spring 定时器-->
+    <context:annotation-config/>
+    <!--spring扫描注解的配置-->
+    <context:component-scan base-package="org.suxuanhua.ssm.tools"/>
+    <!-- Spring 定时器，开启这个配置，spring才能识别@Scheduled注解   -->
+    <task:annotation-driven scheduler="qbScheduler" mode="proxy"/>
+    <task:scheduler id="qbScheduler" pool-size="10"/>
+
+
+    <!-- spring 提供了 Handler 组件扫描器，解决重复配置多个Handler 的麻烦
+        注意：这种方式，仅仅支持注解方式的开发，不支持非注解的开发。
+    -->
+    <context:component-scan base-package="org.suxuanhua.ssm.controller"/>
+
+
+    <!-- springmvc 拦截器，拦截所有-->
+    <mvc:interceptors>
+        <!--多个拦截器，顺序执行，如果前面的配置的HandlerInterceptor不放行，后面配置的所有HandlerInterceptor都无法执行-->
+        <!-- 统一异常处理 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="org.suxuanhua.ssm.controller.interceptor.ExceptionInterceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <!--拦截器链，拦截器拦截的应用程序的路径。支持精确的路径映射URI（如“/ myPath”）以及Ant-stype路径模式（如/ myPath / **）
+                "/**" : 拦截/*/... 拦截该目录下所有层
+                "/*" : 拦截/*拦截该目录下，拦截一层
+            -->
+            <mvc:mapping path="/**"/>
+            <bean class="org.suxuanhua.ssm.controller.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+    <!-- MVC注解驱动，通过annotation-driven可以替代下边的处理器映射器 和 适配器的配置 -->
+    <!--<mvc:annotation-driven conversion-service="converterService"></mvc:annotation-driven>-->
+
+    <!-- 注解处理器映射器 -->
+    <bean
+            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    </bean>
+
+    <!-- 注解适配器 -->
+    <bean
+            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <!-- 注入自定义converter转换器，日期格式的转换和去字符串前后空格-->
+        <property name="webBindingInitializer" ref="customBinder"/>
+
+        <!-- 配置JSON转换器-->
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 配置视图解析器，spirngMVC中由多个视图解析器，
+         InternalResourceViewResolver：JSP视图解析器
+         该视图解析器用于应用的内部内部资源的封装与跳转。
+         而对于内部查找规则是将逻辑视图名称配置为前缀与后缀的方式，即前缀 + 视图名称 + 后缀。
+
+         viewClass：JstlView表示JSP模板页面需要使用JSTL标签库，所以classpath 中必须包含jstl
+         prefix：jsp 页面地址
+         suffix：后缀
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 此方法只针对modelAndView 有效-->
+        <!-- XML配置方式中，handleRequest() 需要通过:
+                    modelAndView.setViewName ("/WEB-INF/jsp/userList.jsp");
+                    的方式，指定业务逻辑代码运行完成之后，要跳转的地址，
+                    为了方便开发，可以在视图解析器中配置前缀 和 后缀
+         -->
+        <!-- 可省-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
+        <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    </bean>
+
+
+    <!--自定义WebBinder，要将其注入到适配器中-->
+    <bean id="customBinder" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+        <!--使用converter 进行参数转换-->
+        <property name="conversionService" ref="conversionService"/>
+    </bean>
+    <!-- 转换器 -->
+    <bean id="conversionService"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <!--日期转换器-->
+                <!--<bean class="org.suxuanhua.ssm.controller.converter.CustomDateConverter"/>-->
+                <!--字符串转换器-->
+                <bean class="org.suxuanhua.ssm.controller.converter.CustomStringTrimConverter"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 配置图片上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 以字节为单位的，1k=1024字节，设置上传文件的最大尺寸为5M -->
+        <property name="maxUploadSize" value="5242880"/>
+        <!--<property name="maxInMemorySize" value="4096"/>-->
+        <!--<property name="defaultEncoding" value="UTF-8"/>-->
+        <!--<property name="resolveLazily" value="true"/>-->
+    </bean>
+
+    <!-- 配置自定义统一异常处理器类，springmvc 通过HandlerExceptionResolver接口识别该类是统一异常处理器类-->
+    <bean class="org.suxuanhua.ssm.exception.CustomExceptionResolver"/>
+</beans>

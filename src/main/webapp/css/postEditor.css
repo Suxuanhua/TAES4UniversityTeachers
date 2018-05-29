@@ -1,0 +1,66 @@
+.login_hr{
+    width:100%;
+    height:1px;
+    margin-bottom: 1.5%;
+    *height:1px; color: rgba(0, 0, 0, 0.1);/* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+@-moz-document url-prefix(){ hr{height:3px;}} /* for firefox */
+
+#postEditor_top{
+    margin: 10% auto auto auto;
+    width: 50%;
+    /*background-color: #00ffdf;*/
+}
+#postEditor_top ul li {
+    float: left;
+    height: 22px;
+    list-style: none;/*列表样式，去掉黑点*/
+    /*background-color: #1e88e5;*/
+}
+#postEditor_top ul li input{
+    font-size: small;
+    padding-left: 5px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 9px;
+    height: 22px;
+    width: 400px;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#postEditor_top ul li .button{
+    padding: 0;
+    width: 283px;
+    height: 22px;
+    float: right;
+    text-align: right;/*按钮靠右*/
+    /*background-color: #7e59a0;*/
+}
+#postEditor_top ul li .button input{
+    margin: 0 0 0 10%;/*上左下右*/
+    width: 50px;
+    padding: 0 0 0 0;
+    background-color: white;
+}
+#postEditor_top ul li .button input:hover{
+    height: 22px;
+
+    -webkit-transition:all 0.5s ease-out 0s;
+    -o-transition:all 0.5s ease-out 0s;
+    transition:all 0.5s ease-out 0s;
+
+    /*border-radius: 5px;*/
+    background-color: rgba(0, 110, 122, 0.2);
+
+    /*background-color: rgba(95, 158, 160, 0.1);*/
+    /*border: 1px solid rgba(32, 178, 170, 0.2);*/
+}
+
+#editor{
+    margin: 3% auto auto auto;
+    width: 50%;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: small;
+    background-color: #e6e6e6;
+}

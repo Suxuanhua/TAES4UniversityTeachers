@@ -1,0 +1,161 @@
+/*默认链接颜色*/
+.contextPage a:link {
+    color: #23769d /*颜色自定义*/;
+    text-decoration: none;
+    outline: none; /*去掉firefox浏览器焦点虚线框*/
+}
+
+/* 已经访问的链接 */
+.contextPage a:visited {
+    color: #009120 /*颜色自定义*/
+}
+
+/* 鼠标经过链接 */
+.contextPage a:hover {
+    color: #0f304c /*颜色自定义*/
+}
+
+/* 鼠标按下的颜色 */
+.contextPage a:active {
+    color: #6c918b /*颜色自定义*/
+}
+
+.table_hr_margin {
+    width: 100%;
+    height: 1px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    *height: 1px;
+    color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.table_hr_nomargin {
+    width: 100%;
+    height: 1px;
+    *height: 1px;
+    color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.contextPage {
+    width: 80%;
+    min-width: 1340px;
+    margin: 10% auto; /*上左下右*/
+    padding-bottom: 5%;
+    text-align: center;
+    border-radius: 5px;
+    /*background: white;*/
+    /*背景斜纹*/
+    background: white repeating-linear-gradient(30deg,
+        /*两个颜色结合*/ hsla(0, 0%, 0%, 0.05),
+    hsla(0, 0%, 50%, 0.1) 1px,
+    hsla(0, 0%, 50%, 0.05),
+    transparent 0, transparent 10px);
+}
+
+.contextPage .contextPageTile {
+    /*禁止选中*/
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 5%;
+    font-size: xx-large;
+    color: rgb(255, 65, 90);
+}
+
+.contextPage .context {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /*background: rgba(145, 28, 77, 0.4);*/
+}
+
+.contextPage .context .contextInfoTitle {
+    /*禁止选中*/
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: 5%;
+    width: 100%;
+}
+
+.contextPage .context .contextInfoTitle ul {
+    /*margin-left: 7%;*/
+}
+
+.contextPage .context .contextInfoTitle ul li {
+    width: 13%;
+    text-align: left;
+    /*background: rgba(0, 106, 133, 0.5);*/
+    list-style: none;
+    float: left;
+}
+
+.contextPage .context .ContextInfo {
+    /*background: rgba(30, 136, 229, 0.5);*/
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.contextPage .context .ContextInfo ul {
+    /*margin-left: 7%;*/
+}
+
+.contextPage .context .ContextInfo ul li {
+    width: 13%;
+    text-align: left;
+    list-style: none;
+    float: left;
+    height: 5%;
+    overflow: hidden;
+    /*background: rgba(0, 145, 32, 0.5);*/
+    /* 超出显示省略号*/
+    overflow: hidden; /*自动隐藏文字*/
+    text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+    white-space: nowrap;/*强制不换行*/
+}
+
+.warning_Title {
+    /*禁止选中*/
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 8%;
+    font-size: 250%;
+    color: #007091;
+}
+.warning_Info{
+    /*禁止选中*/
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+    color: #6c918b;
+}

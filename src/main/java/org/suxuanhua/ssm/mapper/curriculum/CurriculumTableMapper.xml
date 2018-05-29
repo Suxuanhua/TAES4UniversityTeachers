@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 1、mapper.xml中namespace指定为mapper接口的全限定名(完整包名+类名，例如：org.mybatis_mapper.mapper.UserMapper)
+     此步骤目的：通过mapper.xml和mapper.java进行关联。-->
+<mapper namespace="org.suxuanhua.ssm.mapper.curriculum.CurriculumTableMapper">
+
+
+    <select id="seleteAllId" resultType="java.lang.Integer">select curriculumID from tb4_curriculumtable</select>
+
+    <select id="findCurriculumById" parameterType="java.lang.Integer"
+            resultType="org.suxuanhua.ssm.po.curriculum.CurriculumTable">select * from tb4_curriculumtable where curriculumID = #{cid} </select>
+
+
+    <select id="findCurriculumByName" parameterType="java.lang.String"
+            resultType="org.suxuanhua.ssm.po.curriculum.CurriculumTable">select * from tb4_curriculumtable where curriculumName like '%${value}%'</select>
+
+    <insert id="insertCurriculum" parameterType="org.suxuanhua.ssm.po.curriculum.CurriculumTable">
+        <selectKey order="AFTER" keyProperty="teacherID" resultType="java.lang.Integer">select LAST_INSERT_ID()
+        </selectKey>
+        insert into tb4_curriculumtable
+        (curriculumID, curriculumName, grade,className,teacherID,teacherName,teacherSex,teacherPhoneNumber,
+        teacherEMail,classHours,teachingNumber,curriculumNote,curriculumUpdateTime)
+        VALUES
+        (#{curriculumID},#{curriculumName},#{grade},#{className},#{teacherID},#{teacherName},#{teacherSex},
+        #{teacherPhoneNumber},#{teacherEMail},#{classHours},#{teachingNumber},#{curriculumNote},#{curriculumUpdateTime})
+    </insert>
+
+
+    <delete id="deleteCurriculumById"
+            parameterType="java.lang.Integer">delete from tb4_curriculumtable where curriculumID = #{cid}</delete>
+
+
+    <update id="updateCurriculum" parameterType="org.suxuanhua.ssm.po.curriculum.CurriculumTable">
+        update tb4_curriculumtable set curriculumName=#{curriculumName}, grade=#{grade},
+        className=#{className},teacherID=#{teacherID}, teacherName=#{teacherName},teacherSex=#{teacherSex},
+         teacherPhoneNumber=#{teacherPhoneNumber},teacherEMail=#{teacherEMail},classHours=#{classHours},
+         teachingNumber=#{teachingNumber},curriculumNote=#{curriculumNote},curriculumUpdateTime=#{curriculumUpdateTime}
+          where curriculumID=#{curriculumID}</update>
+</mapper>

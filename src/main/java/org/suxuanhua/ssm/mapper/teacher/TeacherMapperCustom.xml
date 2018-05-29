@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.suxuanhua.ssm.mapper.teacher.TeacherMapperCustom">
+    <!-- SQL 片段-->
+    <sql id="query_teacher_where">
+        <if test="teacherCustom!=null">
+            <if test="teacherCustom.teacherID!=null">
+                and teacherID like '%${teacherCustom.teacherID}%'
+            </if>
+            <if test="teacherCustom.teacherName!=null and teacherCustom.teacherName!=''">
+                and teacherName like '%${teacherCustom.teacherName}%'
+            </if>
+            <if test="teacherCustom.teacherPhoneNumber!=null and teacherCustom.teacherPhoneNumber!=''">
+                and teacherPhoneNumber like '%${teacherCustom.teacherPhoneNumber}%'
+            </if>
+            <if test="teacherCustom.teacherEMail!=null and teacherCustom.teacherEMail!=''">
+                and teacherEMail like '%${teacherCustom.teacherEMail}%'
+            </if>
+            <if test="teacherCustom.teacherTitle!=null and teacherCustom.teacherTitle!=''">
+                and teacherTitle = #{teacherCustom.teacherTitle}
+            </if>
+            <if test="teacherCustom.teacherSex!=null and teacherCustom.teacherSex!=''">
+                and teacherSex = #{teacherCustom.teacherSex}
+            </if>
+            order by teacherName desc ,teacherUpdateTime desc
+        </if>
+    </sql>
+
+
+    <!-- 用户查询-->
+    <select id="findTeacherList" parameterType="org.suxuanhua.ssm.po.teacher.TeacherQueryVo"
+            resultType="org.suxuanhua.ssm.po.teacher.TeacherCustom">
+        select * from tb1_teacher
+        <where>
+            <include refid="query_teacher_where"/>
+        </where>
+    </select>
+</mapper>

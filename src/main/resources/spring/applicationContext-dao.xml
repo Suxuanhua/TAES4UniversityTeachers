@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- C3P0：配置引入properties 文件-->
+    <!-- 需要引入context约束，该约束是 xsconfig.xml 中的 context约束，因为 context 支持spring 表达式-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!-- 然后再在连接池配置中引用-->
+    <bean id="dataSource_c3p0_properties" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+        <property name="acquireIncrement" value="${c3p0.acquireIncrement}"/>
+        <!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+        <property name="initialPoolSize" value="${c3p0.initialPoolSize}"/>
+        <property name="minPoolSize" value="${c3p0.minPoolSize}"/>
+        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"/>
+        <!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+        <property name="maxIdleTime" value="${c3p0.maxIdleTime}"/>
+        <property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}"/>
+        <!-- JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements
+                    属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。
+                    如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0-->
+        <property name="maxStatements" value="${c3p0.maxStatements}"/>
+        <!-- c3p0是异步操作的，缓慢的JDBC操作通过帮助进程完成。扩展这些操作可以有效的提升性能 通过
+                          多线程实现多个操作同时被执行。Default: 3-->
+        <property name="numHelperThreads" value="${c3p0.numHelperThreads}"/>
+    </bean>
+
+    <!-- 数据库连接池 -->
+    <bean id="dataSource_jdbc" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+    </bean>
+
+    <!--配置模板类 这个是mybatis提供的一个辅助模板，用来获取session-->
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+
+
+    <!-- 配置SqlsessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 通过 SqlSessionFactoryBean
+             发现 private DataSource dataSource;
+                所以需要注入 dataSources
+             发现 private Resource configLocation;
+                所以需要注入 mybatis 的配置文件
+        -->
+        <!--dataSource-->
+        <!-- 使用C3P0 报异常
+        java.lang.AbstractMethodError: Method com/mchange/v2/c3p0/impl/NewProxyPreparedStatement.isClosed()Z is abstract
+        -->
+        <property name="dataSource" ref="dataSource_c3p0_properties"/>
+        <!--mybatis 的配置文件-->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+    </bean>
+
+    <!-- 普通mapper代理开发，配置mapper，使用mybatis-spring 整合包中 MapperFactoryBean 生成代理对象
+    （因为applicationContext.xml 中只能配置类，不能配置接口）
+    不建议使用该方式：当项目中存在多个mapper时，需要重复对每个Mapper 配置一遍，繁琐！！建议使用 批量mapper 配置：MapperScannerConfigurer(扫描mapper)
+    -->
+    <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+    <!--&lt;!&ndash;通过MapperFactoryBean 源码发现private Class<T> mapperInterface;-->
+    <!--所以需要指定它生成代理对象的接口，不用spring 的时候，是通过-->
+    <!--通过源码发现，MapperFactoryBean 也是继承SqlSessionDaoSupport，-->
+    <!--所以需要注入sqlsessionFactory-->
+    <!--&ndash;&gt;-->
+    <!--&lt;!&ndash;指定它生成代理对象的接口类型&ndash;&gt;-->
+    <!--<property name="mapperInterface" value="org.suxuanhua.ssm.mapper.UserMapper"/>-->
+    <!--&lt;!&ndash;注入sqlsessionFactory&ndash;&gt;-->
+    <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+    <!--</bean>-->
+
+    <!--【推荐使用】 MapperFactoryBean
+        使用扫描器不用配置ID属性，
+        MapperFactoryBean将包下边的mapper 接口自动创建代理对象到Spring 的容器中，
+        bean 的id 是 mapper的接口名（首字母小写）
+     -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 通过源码发现 private String basePackage;
+                所以需要配置扫描的包路径【如果要扫描多个包路径，使用英文逗号隔开","】
+             通过源码发现
+                 private SqlSessionFactory sqlSessionFactory;
+                         //不建议使用，会和 加载配置文件 <context:property-placeholder location="classpath:db.properties" /> 发生冲突，
+                         //导致dataSource 无法获取db.properties 中的内容，使用dataSource 和 MapperScannerConfigurer 无法实例化
+                 private String sqlSessionFactoryBeanName;
+                        //建议使用
+        -->
+        <property name="basePackage" value="org.suxuanhua.ssm.mapper"/>
+        <!-- 注入bean 工厂-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>

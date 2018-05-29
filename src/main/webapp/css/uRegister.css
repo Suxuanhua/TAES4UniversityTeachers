@@ -1,0 +1,152 @@
+.reg_page {
+    font-size: small;
+    font-family: 微软雅黑;
+    list-style: none;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 450px;
+    min-width: 400px; /*控制页面最小宽度，防止变形*/
+    width: 30%;
+
+    /*斜纹*/
+    background: rgba(255, 255, 255, 0) repeating-linear-gradient(30deg,
+        /*两个颜色结合*/ hsla(0, 0%, 0%, 0.05),
+    hsla(0, 0%, 50%, 0.1) 1px,
+    hsla(0, 0%, 50%, 0.05),
+    transparent 0, transparent 10px);
+}
+
+.reg_page .reg_page_text {
+    margin-left: 20%;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 100px;
+    float: left;
+    /*background-color: cadetblue;*/
+}
+
+.reg_page .reg_page_text ul li {
+    height: 18px;
+    margin-bottom: 11px;
+    text-align: right;
+}
+
+.reg_page .reg_page_text ul li span {
+    color: red;
+    margin-right: 10px;
+}
+
+.reg_page .reg_content {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    /*background-color:aqua;*/
+    float: left;
+    text-align: left;
+}
+
+.reg_page .reg_content ul li input {
+    margin-top: 1px;
+    padding-left: 5px;
+    /* 更改输入框字体的颜色 */
+    color: rgb(34, 34, 34);
+    margin-bottom: 9px;
+    height: 18px;
+    width: 200px;
+    border-radius: 5px;
+    /*background-color: rgba(95, 158, 160, 0.1);*/
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.reg_page .reg_content ul li input:hover {
+    /*-moz-transform:translateX(2px);*/
+    /*-webkit-transform:translateX(2px);*/
+    /*-ms-transform:translateX(2px);*/
+    /*transform:translateX(2px);*/
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+
+    border-radius: 5px;
+    background-color: rgba(0, 110, 122, 0.2);
+
+    /*background-color: rgba(30, 160, 3, 0.06);*/
+    border: 1px solid rgb(32, 178, 170);
+    height: 18px;
+}
+
+.table_hr_margin {
+    width: 100%;
+    height: 1px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    *height: 1px;
+    color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@-moz-document url-prefix() {
+    hr {
+        width: 100%;
+        height: 1px;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        *height: 1px;
+        color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* for firefox */
+
+/* 上传头像按钮*/
+.a-upload {
+    padding: 4px 10px;
+    height: 10px;
+    line-height: 10px;
+    position: relative;
+    cursor: pointer;
+    color: #505050;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    font-size: xx-small;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.a-upload input {
+    background: #fafafa;
+    position: absolute;
+    font-size: 10px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+
+.a-upload:hover {
+    color: #444;
+    background-color: rgba(0, 110, 122, 0.2);
+    border: 1px solid rgb(32, 178, 170);
+    text-decoration: none
+}
+
+.reg_page .reg_content .radio_ctrl {
+    height: 18px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.reg_page .reg_content .radio_ctrl .radio_ctrl_in {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 12px;
+    height: 12px;
+}

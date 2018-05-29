@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 1、mapper.xml中namespace指定为mapper接口的全限定名(完整包名+类名，例如：org.mybatis_mapper.mapper.UserMapper)
+     此步骤目的：通过mapper.xml和mapper.java进行关联。-->
+<mapper namespace="org.suxuanhua.ssm.mapper.post.PostMapper">
+
+
+    <select id="seleteAllId" resultType="java.lang.String">select postID from tb2_posts</select>
+
+    <select id="findAllPost" resultType="org.suxuanhua.ssm.po.post.Post">select * from tb2_posts order by postDate desc ,postID desc</select>
+
+
+    <select id="findPostById" parameterType="java.lang.String"
+            resultType="org.suxuanhua.ssm.po.post.Post">select * from tb2_posts where postID = #{pid} </select>
+
+
+    <select id="findPostListByName" parameterType="java.lang.String"
+            resultType="org.suxuanhua.ssm.po.post.Post">select * from tb2_posts where postTitle like '%${value}%'</select>
+
+    <insert id="insertPost" parameterType="org.suxuanhua.ssm.po.post.Post">
+        <selectKey order="AFTER" keyProperty="postID" resultType="java.lang.String">select LAST_INSERT_ID()
+        </selectKey>
+        insert into tb2_posts
+        (postID, uName, uID,uSex,uHeader_default, postTitle,postContentAddr,postDate,postReplies,postVisits)
+        VALUES
+        (#{postID},#{uName},#{uID},#{uSex},#{uHeader_default},#{postTitle},#{postContentAddr},#{postDate},#{postReplies},#{postVisits})
+    </insert>
+
+
+    <delete id="deletePostById"
+            parameterType="java.lang.String">delete from tb2_posts where postID = #{pid}</delete>
+
+
+    <update id="updatePost" parameterType="org.suxuanhua.ssm.po.post.Post">
+        update tb2_posts set
+         postID=#{postID}, uName=#{uName},uID=#{uID},uSex=#{uSex},
+         uHeader_default=#{uHeader_default},postTitle=#{postTitle},
+         postContentAddr=#{postContentAddr},postDate=#{postDate},postReplies=#{postReplies},postVisits=#{postVisits}
+          where postID=#{postID}</update>
+
+    <update id="addVisits" parameterType="java.lang.String">
+        update tb2_posts set postVisits=postVisits+1 where postID=#{postID}
+    </update>
+</mapper>

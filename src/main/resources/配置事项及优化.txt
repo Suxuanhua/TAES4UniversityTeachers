@@ -1,0 +1,42 @@
+需要配置tomcat 虚拟路径，否则无法上传图片：TAES4UT-Pictures，虚拟名称为：TAES4UT-pic
+
+日志位置在log4j.xml 中修改：name="LOG_HOME"
+图片位置在 TAES4UniversityTeachers-Configuration.properties 中修改
+
+
+使用了RESTful，在springmvc.xml 中配置了，资源解析
+        <mvc:resources mapping="/js/**" location="/JavaScript/"/>
+        <mvc:resources mapping="/img/**" location="/Image/"/>
+        //所以以后该目录内的文件都要使用 mapping 内的路径
+
+
+
+
+尽量使用重定向，避免刷新的时候重复提交请求
+
+管理员列表只允许超级管理员访问，控制中心根据不同的权限显示不同的板块，当前登陆的超级管理员不允许删除、降低权限，
+root 只能存在一个，如果想存在多个，只能通过数据库增加。
+
+优化：
+    1.org.suxuanhua.ssm.service.impl.UserServiceImpl.updateUser() 内的，
+        93 行：String fileRootPath = "D:\\TAES4UT-Pictures"; 该处绝对路径需要使用properties 配置文件的方式进行配置。
+
+
+bug:
+    普通用户可以通过编辑自己的信息，修改自己的权限
+    通过get 的方式访问 http://111.230.67.178/TAES4University-Teachers/main/adminlogin.su 报错
+    课程信息编辑有BUG，编辑保存后，404
+
+
+通过 伪静态 隐藏JSP后缀名
+
+把上课的班级统一放到一个表中，然后通过查询获取
+
+教师表 和授课表 添加 【修改人】字段，记录每次更新的用户name
+教师表 和授课表 添加 【系别】字段
+
+
+方法内的所有对象，统一用spring 注入，由Spring 管理
+
+    将不同权限的URL 放到一个Bean/枚举类/配置文件 中，通过拦截器判断校验每个地址的每个用户具备的修改权限。
+    可通过直接拦截整个Controller 来达到批量拦截的目的。

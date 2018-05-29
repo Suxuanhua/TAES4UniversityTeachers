@@ -1,0 +1,76 @@
+.post{
+    margin: 10% auto auto auto;/*上左下右*/
+    /*padding: 0 1% 1% 1%;!*上右下左*!*/
+    width: 80%;
+    background-color:white;
+    /*border:1px solid rgba(0, 105, 78, 0.3);*/
+    border-radius:5px;/*设置或检索对象使用圆角边框。*/
+}
+
+.post .postTitle{
+    margin: auto auto 3% auto;
+    padding-top: 3%;
+    text-align: center;
+    width: 80%;
+    /*background-color: #c24f4a;*/
+}
+.post .postContent{
+    margin: 0 3% 5% 3%;
+    padding-bottom: 3%;
+    line-height: 250%;
+    /*让文本自动换行:*/
+
+    /*word-break属性可以使用的值*/
+    /*值	换行规则	                    IE5以上	Safari与Chrome*/
+    /*normal	使用浏览器默认的换行规则	    支持	支持*/
+    /*keep-all	只能在半角空格或连字符处换行	支持	不支持*/
+    /*break-all	允许在单词内换行	            支持	支持*/
+    word-break:break-all;
+}
+
+/*标点列表*/
+.post .postContent ul{
+    background-color: rgba(0, 128, 0, 0.1);
+}
+.post .postContent ul li{
+    margin-left: 4%;
+}
+/*序数列表*/
+.post .postContent ol{
+    background-color: rgba(0, 128, 0, 0.1);
+}
+.post .postContent ol li{
+    margin-left: 4%;
+}
+
+.post .warning{
+    margin:auto;
+    padding: 5% 0 5% 0;
+    text-align: center;
+    width: 80%;
+    color: #a70800;
+    opacity: 0.5;
+
+    /*禁止选中*/
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.post .warning .warning_Title{
+    font-size: 200%;
+}
+.post .warning .warning_hr{
+    width:100%;
+    margin:0;
+    height:1px;
+    *height:1px; color: rgba(0, 0, 0, 0.1);/* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+@-moz-document url-prefix(){ hr{height:1px;}} /* for firefox */

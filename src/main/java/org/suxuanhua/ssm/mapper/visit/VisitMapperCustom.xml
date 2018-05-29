@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.suxuanhua.ssm.mapper.visit.VisitMapperCustom">
+    <!-- SQL 片段-->
+    <sql id="query_visit_where">
+        <if test="VisitCustom!=null">
+            <if test="VisitCustom.comeToVisitIp!=null and VisitCustom.comeToVisitIp!=''">
+                and comeToVisitIp like '%${VisitCustom.comeToVisitIp}%'
+            </if>
+            <if test="VisitCustom.comeToVisitId!=null">
+                and comeToVisitId like '%${VisitCustom.comeToVisitId}%'
+            </if>
+            <if test="VisitCustom.requestURI !=null and VisitCustom.requestURI!=''">
+                and requestURI like '%${VisitCustom.requestURI}%'
+            </if>
+            <if test="VisitCustom.requestAccept !=null and VisitCustom.requestAccept!=''">
+                and requestAccept like '%${VisitCustom.requestAccept}%'
+            </if>
+            <if test="VisitCustom.acceptLanguage !=null and VisitCustom.acceptLanguage!=''">
+                and acceptLanguage = #{VisitCustom.acceptLanguage}
+            </if>
+            <if test="VisitCustom.acceptCharset !=null and VisitCustom.acceptCharset !=''">
+                and acceptCharset = #{VisitCustom.acceptCharset}
+            </if>
+            order by requestTime desc ,requestNumber desc
+        </if>
+    </sql>
+
+
+    <!-- 用户查询-->
+    <select id="findTeacherList" parameterType="org.suxuanhua.ssm.po.visit.VisitQueryVo"
+            resultType="org.suxuanhua.ssm.po.visit.VisitCustom">
+        select * from tb5_visits
+        <where>
+            <include refid="query_visit_where"/>
+        </where>
+    </select>
+</mapper>

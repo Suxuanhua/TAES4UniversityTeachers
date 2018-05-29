@@ -1,0 +1,301 @@
+body {
+    min-width: 1340px; /*控制页面最小宽度，防止变形*/
+}
+
+.reg_page {
+    font-size: small;
+    font-family: 微软雅黑;
+    list-style: none;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 500px;
+    min-width: 400px; /*控制页面最小宽度，防止变形*/
+    width: 30%;
+    /*斜纹*/
+    background: rgba(255, 255, 255, 0) repeating-linear-gradient(30deg,
+        /*两个颜色结合*/ hsla(0, 0%, 0%, 0.05),
+    hsla(0, 0%, 50%, 0.1) 1px,
+    hsla(0, 0%, 50%, 0.05),
+    transparent 0, transparent 10px);
+}
+
+.reg_page .reg_page_text {
+    margin-left: 15%;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 100px;
+    float: left;
+    /*background-color: cadetblue;*/
+}
+
+.reg_page .reg_page_text ul li {
+    height: 18px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.reg_page .reg_page_text ul li span {
+    color: red;
+    margin-right: 10px;
+}
+
+.reg_page .reg_content {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    /*background-color:aqua;*/
+    float: left;
+    text-align: left;
+}
+
+.reg_page .reg_content ul li input {
+    padding-left: 5px;
+    /* 更改输入框字体的颜色 */
+    color: rgb(34, 34, 34);
+    margin-bottom: 9px;
+    height: 18px;
+    width: 200px;
+    border-radius: 5px;
+    /*background-color: rgba(95, 158, 160, 0.1);*/
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.reg_page .reg_content ul li input:hover {
+    /*-moz-transform:translateX(2px);*/
+    /*-webkit-transform:translateX(2px);*/
+    /*-ms-transform:translateX(2px);*/
+    /*transform:translateX(2px);*/
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+
+    border-radius: 5px;
+    background-color: rgba(0, 110, 122, 0.2);
+
+    /*background-color: rgba(30, 160, 3, 0.06);*/
+    border: 1px solid rgb(32, 178, 170);
+    height: 18px;
+}
+
+.reg_page .reg_content .radio_ctr {
+    height: 18px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.reg_page .reg_content .radio_ctrl .radio_ctrl_in {
+    margin: 0px 10px 10px 10px; /*上右下左*/
+
+    width: 12px;
+    height: 12px;
+    background: #00ffdf;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    *height: 1px;
+    color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@-moz-document url-prefix() {
+    hr {
+        height: 3px;
+    }
+}
+
+/* for firefox */
+
+* {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+input {
+    outline: none
+}
+
+select {
+    outline: none
+}
+
+.login_hr {
+    width: 100%;
+    height: 1px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    *height: 1px;
+    color: rgba(0, 0, 0, 0.1); /* for ie6 ie7 */;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@-moz-document url-prefix() {
+    hr {
+        height: 3px;
+    }
+}
+
+/* for firefox */
+
+.icon {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    /*background-color: #7e59a0;*/
+}
+
+.icon img {
+    width: 150px;
+    height: auto;
+    list-style: none;
+
+    max-width: 100%; /*图片随着div大小的变化而变化*/
+    border-radius: 100px;
+    border: solid #d84f64 1px;
+}
+
+#out_input {
+    font-size: small;
+    font-family: 微软雅黑;
+    width: 300px;
+    min-width: 300px;
+    height: 50px;
+    min-height: 50px;
+    /*margin-top: 23%;*/
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /*background-color: cadetblue;*/
+}
+
+.text {
+    height: 40px;
+    width: 90px;
+    text-align: right;
+    float: left;
+    /*background-color: aqua;*/
+}
+
+.text p {
+    line-height: 20px;
+    margin-bottom: 1px;
+    font-size: small;
+    font-family: 微软雅黑;
+}
+
+.input_text ul {
+    float: right;
+    width: 205px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    /*background-color: crimson;*/
+
+}
+
+.input_text ul li {
+    list-style: none;
+}
+
+.input_text ul li input {
+    padding-left: 5px;
+    /* 更改输入框字体的颜色 */
+    color: rgb(34, 34, 34);
+    margin-bottom: 1px;
+    height: 21px;
+    width: 200px;
+}
+
+.input_text ul li input:hover {
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+
+    border-radius: 5px;
+    background-color: rgba(0, 110, 122, 0.2);
+    /*background-color: rgba(95, 158, 160, 0.1);*/
+    /*border: 1px solid rgba(32, 178, 170, 0.2);*/
+}
+
+.button {
+    padding: 0;
+    width: 230px;
+    height: 30px;
+    float: right;
+    margin: 5% auto auto auto; /*上左下右*/
+    text-align: right;
+    /*background-color: #7e59a0;*/
+}
+
+.button input {
+    height: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    margin-left: 14px;
+}
+
+.button input:hover {
+    height: 20px;
+
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+
+    border-radius: 5px;
+    background-color: rgba(0, 110, 122, 0.2);
+
+    /*background-color: rgba(95, 158, 160, 0.1);*/
+    /*border: 1px solid rgba(32, 178, 170, 0.2);*/
+}
+
+/* 上传头像按钮*/
+.a-upload {
+    padding: 4px 10px;
+    height: 10px;
+    line-height: 10px;
+    position: relative;
+    cursor: pointer;
+    color: #505050;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    font-size: xx-small;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.a-upload input {
+    background: #fafafa;
+    position: absolute;
+    font-size: 10px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+
+.a-upload:hover {
+    color: #444;
+    background-color: rgba(0, 110, 122, 0.2);
+    border: 1px solid rgb(32, 178, 170);
+    text-decoration: none
+}

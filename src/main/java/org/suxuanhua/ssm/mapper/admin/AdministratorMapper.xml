@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.suxuanhua.ssm.mapper.admin.AdministratorMapper">
+
+    <select id="findAdminUserById" parameterType="java.lang.Integer"
+            resultType="org.suxuanhua.ssm.po.admin.AdministratorCustom">select * from tb3_adminusers where adminID = #{id}</select>
+    <select id="findAdminUserByEmail" parameterType="java.lang.String"
+            resultType="org.suxuanhua.ssm.po.admin.AdministratorCustom">select * from tb3_adminusers where adminEMail = #{email}</select>
+
+    <select id="seleteAllEMail" resultType="java.lang.String">select adminEMail from tb3_adminusers</select>
+    <select id="seleteAllId" resultType="java.lang.Integer">select adminID from tb3_adminusers</select>
+    <select id="seleteAllPhoneNumber" resultType="java.lang.String">select adminPhoneNumber from tb3_adminusers</select>
+
+    <insert id="insertAdminUser" parameterType="org.suxuanhua.ssm.po.admin.Administrator">
+        <selectKey order="AFTER" keyProperty="adminID" resultType="java.lang.Integer">select LAST_INSERT_ID()
+        </selectKey>
+        insert into tb3_adminusers(adminID, adminName, adminPermissions,adminPassword, adminPhoneNumber, adminEMail,
+        adminNote,adminLoginTime,adminLoginIp,adminHeader_default)
+        VALUES
+        (#{adminID},#{adminName},#{adminPermissions},#{adminPassword},#{adminPhoneNumber},#{adminEMail},#{adminNote},#{adminLoginTime},#{adminLoginIp},#{adminHeader_default})
+    </insert>
+
+
+    <update id="setLoginTime" parameterType="org.suxuanhua.ssm.po.admin.Administrator">
+      update tb3_adminusers set adminLoginTime=#{adminLoginTime} where adminID = #{adminID}
+    </update>
+    <update id="setLoginIp" parameterType="org.suxuanhua.ssm.po.admin.Administrator">
+      update tb3_adminusers set adminLoginIp=#{adminLoginIp} where adminID = #{adminID}
+    </update>
+
+    <update id="updateAdminUser" parameterType="org.suxuanhua.ssm.po.admin.Administrator">
+        update tb3_adminusers set
+        adminName=#{adminName}, adminPermissions=#{adminPermissions},
+        adminPassword=#{adminPassword}, adminPhoneNumber=#{adminPhoneNumber},
+        adminEMail=#{adminEMail}, adminNote=#{adminNote},
+         adminLoginTime=#{adminLoginTime},
+          adminLoginIp=#{adminLoginIp},
+          adminHeader_default=#{adminHeader_default} where adminID=#{adminID}
+    </update>
+
+    <delete id="deleteAdminUserById"
+            parameterType="java.lang.Integer">delete from tb3_adminusers where adminID = #{adminID}</delete>
+</mapper>

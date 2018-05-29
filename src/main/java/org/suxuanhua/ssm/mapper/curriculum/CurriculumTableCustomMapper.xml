@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.suxuanhua.ssm.mapper.curriculum.CurriculumTableCustomMapper">
+    <!-- SQL 片段-->
+    <sql id="query_where">
+        <if test="curriculumTable!=null">
+            <if test="curriculumTable.curriculumID!=null">
+                and curriculumID like '%${curriculumTable.curriculumID}%'
+            </if>
+            <if test="curriculumTable.curriculumName!=null and curriculumTable.curriculumName!=''">
+                and curriculumName like '%${curriculumTable.curriculumName}%'
+            </if>
+            <if test="curriculumTable.teacherID!=null">
+                and teacherID like '%${curriculumTable.teacherID}%'
+            </if>
+            <if test="curriculumTable.teacherName!=null and curriculumTable.teacherName!=''">
+                and teacherName like '%${curriculumTable.teacherName}%'
+            </if>
+            <if test="curriculumTable.className!=null and curriculumTable.className!=''">
+                and className like '%${curriculumTable.className}%'
+            </if>
+            <if test="curriculumTable.grade!=null and curriculumTable.grade!=''">
+                and grade like #{curriculumTable.grade}
+            </if>
+            <if test="curriculumTable.teacherEMail!=null and curriculumTable.teacherEMail!=''">
+                and teacherEMail like #{curriculumTable.teacherEMail}
+            </if>
+            order by curriculumName desc ,curriculumUpdateTime desc
+        </if>
+    </sql>
+
+
+    <!-- 用户查询-->
+    <select id="findCurriculumTableList" parameterType="org.suxuanhua.ssm.po.curriculum.CurriculumTableQueryVo"
+            resultType="org.suxuanhua.ssm.po.curriculum.CurriculumTableCustom">
+        select * from tb4_curriculumtable
+        <where>
+            <include refid="query_where"/>
+        </where>
+    </select>
+</mapper>

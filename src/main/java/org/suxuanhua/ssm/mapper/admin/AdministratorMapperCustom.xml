@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.suxuanhua.ssm.mapper.admin.AdministratorMapperCustom">
+    <!-- SQL 片段-->
+    <sql id="query_where">
+        <if test="administratorCustom!=null">
+
+            <if test="administratorCustom.adminID!=null">
+                and adminID like '%${administratorCustom.adminID}%'
+            </if>
+
+            <if test="administratorCustom.adminName!=null and administratorCustom.adminName!=''">
+                and adminName like '%${administratorCustom.adminName}%'
+            </if>
+
+            <if test="administratorCustom.adminPhoneNumber!=null and administratorCustom.adminPhoneNumber!=''">
+                and adminPhoneNumber like '%${administratorCustom.adminPhoneNumber}%'
+            </if>
+
+            <if test="administratorCustom.adminEMail!=null and administratorCustom.adminEMail!=''">
+                and adminEMail like '%${administratorCustom.adminEMail}%'
+            </if>
+            order by adminPermissions desc ,adminName desc
+        </if>
+    </sql>
+    <!-- 用户查询-->
+    <select id="findAdminUserList" parameterType="org.suxuanhua.ssm.po.admin.AdminstratorQueryVo"
+            resultType="org.suxuanhua.ssm.po.admin.AdministratorCustom">
+        select * from tb3_adminusers
+        <where>
+            <include refid="query_where"/>
+        </where>
+    </select>
+</mapper>

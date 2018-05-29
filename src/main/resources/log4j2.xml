@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--每隔1800秒（半小时），自动监控该配置文件是否有变化，如果变化，则自动根据文件内容重新配置（很不错的功能！）-->
+<Configuration status="OFF" monitorInterval="1800">
+    <properties>
+        <!--日志存放目录-->
+        <!--<property name="LOG_HOME">WEB-INF/logs</property>-->
+        <!--<property name="LOG_HOME">/TAES4UT/TAES4UT-Logs</property>-->
+        <property name="LOG_HOME">D:\TAES4UT-Logs</property>
+        <!--日志文件名-->
+        <property name="FILE_NAME">taes4ut-log</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!--日志文件路径，日志备份路径.压缩包格式-->
+        <RollingFile name="running-log" fileName="${LOG_HOME}/${FILE_NAME}.log"
+                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd}-%i.log.gz"
+                     immediateFlush="true">
+            <PatternLayout
+                    pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <!--日志文件大小-->
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <!--最多保留文件数-->
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- <Logger name="com.cssweb.test.app" level="trace" additivity="true">
+            <AppenderRef ref="running-log" /> </Logger> -->
+
+        <!--日志拦截存储级别-->
+        <Root level="info">
+            <!-- 这里是输入到文件，很重要-->
+            <AppenderRef ref="running-log"/>
+            <!-- 这里是输入到控制台-->
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

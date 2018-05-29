@@ -1,0 +1,279 @@
+* {
+    width: auto;
+    /*max-width: 100%;!*图片随着div大小的变化而变化，会影响wangEditor文本编辑工具*!*/
+    /*list-style: none;*/
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    /*text-align: center;!*会影响wangEditor文本编辑工具*!*/
+    font-family: 微软雅黑, Microsoft YaHei UI;
+    /*!*这里控制全局内容不能被选中*!*/
+    /*-webkit-user-select:none;*/
+    /*-moz-user-select:none;*/
+    /*-ms-user-select:none;*/
+    /*user-select:none;*/
+
+    /*内容不能被拖拽*/
+    -webkit-user-drag: none; /*对Chrome Safari Opera 有效*/
+}
+
+input {
+    outline: none
+}
+
+select {
+    outline: none
+}
+
+html {
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+    width: 0px
+}
+
+body {
+    background-color: #f3f3f3;
+    min-width: 1340px;
+}
+
+#index {
+    /*在这里能控制导航部门不能被选中*/
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    min-width: 1366px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 8;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    list-style: none; /*列表样式*/
+    background-color: white;
+    /*外阴影*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+/*导航链接样式*/
+#index a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    outline: none;
+}
+
+#index a:hover {
+    color: black;
+}
+
+#title {
+    float: left;
+    z-index: 9;
+    position: absolute;
+    min-width: 1300px;
+    margin-left: 100px;
+    margin-right: 100px;
+    /*background: #006a85;*/
+}
+
+#title #title-div-ico {
+    z-index: 10;
+
+    list-style: none;
+    position: relative;
+    float: left;
+    margin-right: 20px;
+}
+
+#title #title-div-ico:hover {
+    transform-origin: 0 0;
+    transform: rotate(5deg);
+
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+}
+
+#title #title-div {
+    z-index: 8;
+    float: left;
+    margin-top: 20px;
+    width: 40%;
+}
+
+#title #title-div ul li {
+    line-height: 25px;
+    z-index: 9;
+    cursor: pointer;
+    list-style: none;
+    color: black;
+    float: left;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+}
+
+#title #title-div ul li:hover {
+    /*border: 1px solid rgba(95, 158, 160, 0.3);*/
+    /*border-radius:50%;*/
+    height: 100%;
+    /*background: rgb(226, 226, 226);*/
+
+    color: #1e88e5;
+
+    /*两者配合实现流畅动画;淡入淡出*/
+    -webkit-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s; /*阴影扩大溢出效果控制：第一个参数：动画时长，第二个参数：在多少秒后动画开始*/
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+}
+
+#title #title-div ul li ul {
+    padding-top: 15px;
+}
+
+#title #title-div ul li ul li {
+    z-index: 10;
+    padding: auto;
+    width: 100px;;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    display: none;
+}
+
+#title #title-div ul li:hover ul {
+    /*鼠标经过扩大*/
+    height: 50px;
+}
+
+#title #title-div ul li:hover ul li {
+    font-size: small;
+    display: block;
+    background: rgb(255, 255, 255);
+
+    position: relative;
+
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+
+    /*外阴影*/
+    /*Safariand Google chrome10.0- ~ */
+    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0- ~ */
+    -moz-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+    /*Firefox4.0+、 Google chrome 10.0+ 、 Oprea10.5+ and IE*/
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+#title #title-div ul li:hover ul li:hover {
+    background: rgb(108, 200, 198);
+    /*向左移动*/
+    -moz-transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+    -ms-transform: translateX(-10px);
+    transform: translateX(-10px);
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+}
+
+#title #title_search {
+    margin-left: 50px;
+    margin-top: 23px;
+    padding-top: 0;
+
+    line-height: 18px;
+
+    float: left;
+    width: 300px;
+    height: 22px;
+}
+
+#title #title_search form {
+    width: 175px;
+    height: 20px;
+    border: 1px solid rgba(122, 180, 203, 0.3);
+    border-radius: 20px;
+}
+
+#title #title_search li {
+    margin-top: 0;
+    float: left;
+}
+
+#title #title_search li #title_search_in {
+    width: 150px;
+    height: 20px;
+    text-align: left;
+    padding-left: 10px;
+    /*border: 1px solid rgba(122, 180, 203, 0.3);*/
+    border-radius: 20px;
+}
+
+#title #title_search li #title_search_in:hover {
+
+    /*向左移动*/
+    /*-moz-transform:translateX(-10px);*/
+    /*-webkit-transform:translateX(-10px);*/
+    /*-ms-transform:translateX(-10px);*/
+    /*transform:translateX(-10px);*/
+    /*向外淡出*/
+    -webkit-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+
+    border: 1px solid rgb(0, 112, 145);
+}
+
+#title #title_search li #title_search_bt {
+    background-image: url("../img/search_ico.png");
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    background-size: 50%;
+    /*border: 1px solid rgba(122, 180, 203, 0.3);*/
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+#title #title_search li #title_search_bt:hover {
+    background-image: url("../img/search_ico2.png");
+    background-color: #aae2ff;
+    border: 1px solid rgb(0, 112, 145);
+}
+
+#title .top_nav_notice span {
+    margin-left: 10px;
+    margin-top: 23px;
+    padding-top: 0;
+
+    line-height: 18px;
+
+    float: right;
+    width: 200px;
+    height: 22px;
+    color: #ff415a;
+    /*用...代替，并隐藏多余文字*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
