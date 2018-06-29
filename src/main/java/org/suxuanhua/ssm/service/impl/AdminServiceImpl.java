@@ -76,7 +76,7 @@ public class AdminServiceImpl implements AdminService {
     public AdministratorCustom findAdminUserByEmail(final String email) throws Exception {
         return adminstratorMapper.findAdminUserByEmail (email.toLowerCase ());
     }
-
+    @Override
     public AdministratorCustom findAdminUserById(final Integer auid) throws Exception {
 
         return adminstratorMapper.findAdminUserById (auid);
@@ -116,7 +116,7 @@ public class AdminServiceImpl implements AdminService {
         if (updateSituation == true && pictureFile != null) {
             String path = TAES4Utils.uploadHeaderImage (fileRootPath, "/uHeader_default/Admin/", administratorCustom.getAdminID ().toString (), pictureFile);
             //因为更新失败会返回默认值所以要判断
-            if (!path.equals ("/uHeader_default/uHeader_default.jpg")) {
+            if (!"/uHeader_default/uHeader_default.jpg".equals (path)) {
                 TAES4Utils.deleteAlreadyExistingFile (fileRootPath + administratorCustom.getAdminHeader_default ());
                 administratorCustom.setAdminHeader_default (path);
             }
@@ -251,7 +251,7 @@ public class AdminServiceImpl implements AdminService {
         else
             return false;
     }
-
+    @Override
     public Boolean setLoginIpByEmail(String loginIp, String email) throws Exception {
         AdministratorCustom admin = findAdminUserByEmail (email);
         admin.setAdminLoginIp (loginIp);

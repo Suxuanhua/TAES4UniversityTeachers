@@ -224,7 +224,7 @@ public class CurriculumController {
         Boolean deleteSituation;
         if (session_vcode.equalsIgnoreCase (loginVerifyCode)) {
             //root 课程不能被删除
-            if (curriculumID != null && !curriculumID.equals ("")) {
+            if (curriculumID != null && !"".equals (curriculumID)) {
                 //删除数据库中课程信息
                 deleteSituation = curriculumService.deleteCurriculumById (curriculumID);
                 if (deleteSituation) {

@@ -46,7 +46,7 @@ public class TAES4Utils {
         if (ip == null || ip.length () == 0 || "unknown".equalsIgnoreCase (ip)) {
             ip = request.getRemoteAddr ();
         }
-        return ip.equals ("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
+        return "0:0:0:0:0:0:0:1".equals (ip) ? "127.0.0.1" : ip;
     }
 
 
@@ -140,7 +140,7 @@ public class TAES4Utils {
             //使用substring 通过“.” 切割 获得文件名
             suffix = pictureName.substring (pictureName.lastIndexOf (".") + 1);
             //判断后缀名是否支持使用
-            if (suffix.equals ("jpg") || suffix.equals ("jpeg") || suffix.equals ("png")) {
+            if ("jpg".equals (suffix) || "jpeg".equals (suffix) || "png".equals (suffix)) {
                 //如果路径不存在，则创建
                 if (!new File (fileRootPath + pictureTypePath + uid).exists ())
                     new File (fileRootPath + pictureTypePath + uid).mkdirs ();

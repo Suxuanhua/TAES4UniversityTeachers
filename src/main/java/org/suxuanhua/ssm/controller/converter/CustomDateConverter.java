@@ -19,7 +19,7 @@ public class CustomDateConverter implements Converter<String, Date> {
         Date date = null;
         try {
             //进行日期转换
-            if (source != null && !source.equals ("")) {
+            if (source != null && !"".equals (source)) {
                 SimpleDateFormat sm = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");//2018-03-12 19:33:36
                 date = sm.parse (source);
             } else return null;

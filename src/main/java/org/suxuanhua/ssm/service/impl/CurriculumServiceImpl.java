@@ -92,13 +92,13 @@ public class CurriculumServiceImpl implements CurriculumService {
                     && !curriculumTable.getCurriculumName ().isEmpty ()
 
                     && curriculumTable.getGrade () != null
-                    && !curriculumTable.getGrade ().equals ("")
+                    && !"".equals (curriculumTable.getGrade ())
 
                     && curriculumTable.getClassName () != null
-                    && !curriculumTable.getClassName ().equals ("")
+                    && !"".equals (curriculumTable.getClassName ())
 
                     && curriculumTable.getTeacherID () != null
-                    && !curriculumTable.getTeacherID ().equals ("")
+                    && !"".equals (curriculumTable.getTeacherID ())
 
                     && curriculumTable.getTeacherName () != null
                     && !curriculumTable.getTeacherName ().isEmpty ()
@@ -110,13 +110,13 @@ public class CurriculumServiceImpl implements CurriculumService {
                     && !curriculumTable.getTeacherPhoneNumber ().isEmpty ()
 
                     && curriculumTable.getTeacherSex () != null
-                    && !curriculumTable.getTeacherSex ().equals ("")
+                    && !"".equals (curriculumTable.getTeacherSex ())
 
                     && curriculumTable.getClassHours () != null
-                    && !curriculumTable.getClassHours ().equals ("")
+                    && !"".equals (curriculumTable.getClassHours ())
 
                     && curriculumTable.getTeachingNumber () != null
-                    && !curriculumTable.getTeachingNumber ().equals ("")
+                    && !"".equals (curriculumTable.getTeachingNumber ())
                     ) {
                 //ID
                 Integer id = TAES4Utils.createID (8);

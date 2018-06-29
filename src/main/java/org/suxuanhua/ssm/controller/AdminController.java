@@ -176,7 +176,7 @@ public class AdminController {
         //需要添加判断，当前是否存在登录用户，如果存在，直接跳转登录页面
         if (session_vcode.equalsIgnoreCase (loginVerifyCode)
                 && TAES4Utils.getReferer (request).contains ("/adminlogin.su")
-                && !adminEMail.equals ("")
+                && !"".equals (adminEMail)
                 && adminEMail != null
                 && !adminPassword.equals ("")
                 && adminPassword != null

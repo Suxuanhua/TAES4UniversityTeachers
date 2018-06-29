@@ -212,7 +212,7 @@ public class TeacherController {
 
         if (session_vcode.equalsIgnoreCase (loginVerifyCode)) {
             //root 用户不能被删除
-            if (teacherID != null && !teacherID.equals ("")) {
+            if (teacherID != null && !"".equals (teacherID)) {
                 //删除数据库中用户信息
                 deleteSituation = teacherService.deleteTeacherById (teacherID, fileRootPath + teacherHeader_default);
                 if (deleteSituation) {

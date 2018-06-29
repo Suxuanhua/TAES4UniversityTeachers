@@ -15,7 +15,7 @@ public class CustomStringTrimConverter implements Converter<String, String> {
             //去掉字符串两边的空格
             if (source != null && !source.isEmpty ()) {
                 source = source.trim ();
-                if (source.equals (""))
+                if ("".equals (source))
                     return null;
             }
         } catch (Exception e) {

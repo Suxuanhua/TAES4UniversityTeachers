@@ -36,6 +36,7 @@ public class TeacherServiceImpl implements TeacherService {
      * @param
      * @return List<String>
      */
+    @Override
     public List<String> seleteAllEMail() throws Exception {
         return teacherMapper.seleteAllEMail ();
     }
@@ -119,7 +120,7 @@ public class TeacherServiceImpl implements TeacherService {
         if (updateSituation == true && pictureFile != null) {
             String path = TAES4Utils.uploadHeaderImage (fileRootPath, "/uHeader_default/Teacher/", teacherCustom.getTeacherID ().toString (), pictureFile);
             //因为更新失败会返回默认值所以要判断
-            if (!path.equals ("/uHeader_default/uHeader_default.jpg")) {
+            if (!"/uHeader_default/uHeader_default.jpg".equals (path)) {
                 TAES4Utils.deleteAlreadyExistingFile (fileRootPath + teacherCustom.getTeacherHeader_default ());
                 teacherCustom.setTeacherHeader_default (path);
             }
@@ -159,7 +160,7 @@ public class TeacherServiceImpl implements TeacherService {
                     && !teacherCustom.getTeacherPhoneNumber ().isEmpty ()
 
                     && teacherCustom.getTeacherSex () != null
-                    && !teacherCustom.getTeacherSex ().equals ("")
+                    && !"".equals (teacherCustom.getTeacherSex ())
                     ) {
                 //ID
                 Integer id = TAES4Utils.createID (8);
